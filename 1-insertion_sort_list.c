@@ -37,4 +37,24 @@ void insertion_sort_list(listint_t **list)
 	current = (*list)->next;
 	while (current != NULL)
 	{
-
+		if ((*current).prev->n > (*current).n)
+		{
+			temp = (*current).next;
+			while ((*current).prev != NULL)
+			{
+				if ((*current).n < (*current).prev->n)
+				{
+					swapi(current);
+					while ((*list)->prev != NULL)
+						(*list) = (*list)->prev;
+					print_list(*list);
+				}
+				else
+					break;
+			}
+			current = temp;
+		}
+		else
+			current = (*current).next;
+	}
+}
